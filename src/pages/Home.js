@@ -1,10 +1,30 @@
-import { useSearchParams } from "react-router-dom";
+import Button from "../component/Button";
 
 const Home = () => {
-  const [serchParams, setSerchParams] = useSearchParams();
-  console.log(serchParams.get("sort"));
-
-  return <div>Home page</div>;
+  return (
+    <div>
+      <Button
+        text={"기본 버튼"}
+        onClick={() => {
+          alert("default button");
+        }}
+      />
+      <Button
+        type="positive"
+        text={"긍정 버튼"}
+        onClick={() => {
+          alert("positive button");
+        }}
+      />
+      <Button
+        type="negative"
+        text={"부정 버튼"}
+        onClick={() => {
+          alert("negative button");
+        }}
+      />
+    </div>
+  );
 };
 
 export default Home;
