@@ -1,10 +1,13 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
-import { useReducer, useRef } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
+
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
 
 function reducer(state, action) {
   switch (action.type) {
@@ -19,15 +22,48 @@ function reducer(state, action) {
     case "DELETE": {
       return state.filter((it) => String(it.id) !== String(action.targetId));
     }
+    case "INIT": {
+      return action.data;
+    }
     default: {
       return state;
     }
   }
 }
 
+const mockData = [
+  {
+    id: "mock1",
+    date: new Date().getTime(),
+    content: "mock1",
+    emotionId: 1,
+  },
+  {
+    id: "mock2",
+    date: new Date().getTime(),
+    content: "mock2",
+    emotionId: 2,
+  },
+  {
+    id: "mock3",
+    date: new Date().getTime(),
+    content: "mock3",
+    emotionId: 3,
+  },
+];
+
 function App() {
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
+
+  useEffect(() => {
+    dispatch({
+      type: "INIT",
+      data: mockData,
+    });
+    setIsDataLoaded(true);
+  }, []);
 
   const onCreate = (date, content, emotionId) => {
     dispatch({
@@ -61,16 +97,24 @@ function App() {
     });
   };
 
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/diary/:id" element={<Diary />} />
-        <Route path="/edit" element={<Edit />} />
-      </Routes>
-    </div>
-  );
+  if (!isDataLoaded) {
+    return <div>데이터를 불러오는 중입니다.</div>;
+  } else {
+    return (
+      <DiaryStateContext.Provider value={data}>
+        <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/new" element={<New />} />
+              <Route path="/diary/:id" element={<Diary />} />
+              <Route path="/edit/:id" element={<Edit />} />
+            </Routes>
+          </div>
+        </DiaryDispatchContext.Provider>
+      </DiaryStateContext.Provider>
+    );
+  }
 }
 
 export default App;
