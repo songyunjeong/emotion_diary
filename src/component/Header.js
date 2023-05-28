@@ -1,11 +1,9 @@
-import "./Header.css";
+import Editor from "./Editor";
 
-const Header = ({ title, leftChild, rightChild }) => {
+const Header = () => {
   return (
     <div className="Header">
-      <div className="header_left">{leftChild}</div>
-      <div className="header_title">{title}</div>
-      <div className="header_right">{rightChild}</div>
+      <Editor />
     </div>
   );
 };
