@@ -31,8 +31,6 @@ const Diary = () => {
           leftChild={<Button text={"< 뒤로가기"} onClick={goBack} />}
           rightChild={<Button text={"수정하기"} onClick={goEdit} />}
         />
-        <div>{id}번 일기</div>
-        <div>Diary page</div>
         <Viewer content={content} emotionId={emotionId} />
       </div>
     );

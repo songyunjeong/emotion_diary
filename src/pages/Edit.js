@@ -17,7 +17,7 @@ const Edit = () => {
 
   const { onUpdate, onDelete } = useContext(DiaryDispatchContext);
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
     if (window.confirm("일기를 정말 수정할까요?")) {
       const { date, content, emotionId } = data;
       onUpdate(id, date, content, emotionId);
