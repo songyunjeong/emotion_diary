@@ -6,7 +6,7 @@ Home, New, Diary, Edit로 총 4페이지로 구성 되어있습니다.
 
 프로젝트를 통해서 util을 사용한 효율적인 구현방법을 배웠고, 필요한 Hook을 만들어 사용해보았습니다.
 
-🖥️ [감정 일기장 보러가기](https://songyunjeong.github.io/emotion_diary)
+🖥️ [감정 일기장 보러가기](https://emotiondiary-songyunjeong.web.app) (Firebase)
 
 <img width="478" alt="스크린샷 2023-06-05 오후 4 37 04" src="https://github.com/songyunjeong/emotion_diary/assets/117874502/fa431515-95ad-47e8-bbb1-c98744457d1c">
 
