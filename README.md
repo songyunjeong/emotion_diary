@@ -15,3 +15,8 @@ Home, New, Diary, Edit로 총 4페이지로 구성 되어있습니다.
 <img width="478" alt="스크린샷 2023-06-05 오후 4 38 07" src="https://github.com/songyunjeong/emotion_diary/assets/117874502/973cdfd1-1e96-4c4b-a2f3-913cb5439419">
 
 <img width="478" alt="스크린샷 2023-06-05 오후 4 38 28" src="https://github.com/songyunjeong/emotion_diary/assets/117874502/c8e35113-a641-4300-bcf2-23e6d8890e26">
+
+<br />
+<br />
+
+source. 한 입 크기로 잘라 먹는 리액트
